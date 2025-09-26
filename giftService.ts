@@ -2,7 +2,7 @@
 import { GiftItem } from './types';
 
 // IMPORTANT: Paste your deployed Google Apps Script URL here.
-const SCRIPT_URL = 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzRUXLKSlOvwunakKi9-NXCgMPuanS5Z9LNTqELasRFaD3esCT-i4lS4kEnXzY6eVhbFg/exec';
 
 // Helper function to handle fetch requests
 async function apiRequest(payload: object = {}, method: 'GET' | 'POST' = 'GET') {
