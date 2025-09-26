@@ -1,12 +1,12 @@
 
 import React from 'react';
-import Header from './components/Header';
-import InvitationCard from './components/InvitationCard';
-import RsvpSection from './components/RsvpSection';
-import GiftSection from './components/GiftSection';
-import MessageSection from './components/MessageSection';
-import LocationSection from './components/LocationSection';
-import Footer from './components/Footer';
+import Header from './Header';
+import InvitationCard from './InvitationCard';
+import RsvpSection from './RsvpSection';
+import GiftSection from './GiftSection';
+import MessageSection from './MessageSection';
+import LocationSection from './LocationSection';
+import Footer from './Footer';
 
 const App: React.FC = () => {
   return (
