@@ -38,7 +38,7 @@ const MessageSection: React.FC = () => {
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Deixe uma mensagem carinhosa para os pais..."
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-400 focus:border-purple-400 transition"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-400 focus:border-purple-400 transition text-gray-800"
                 ></textarea>
                 <div className="text-right text-sm text-gray-500 mt-1">
                     {message.length}/{maxLength}
