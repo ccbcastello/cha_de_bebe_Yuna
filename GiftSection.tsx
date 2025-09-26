@@ -6,7 +6,7 @@ import { getItems, reserveItem } from './giftService';
 
 const GiftSection: React.FC = () => {
   const [items, setItems] = useState<GiftItem[]>([]);
-  const [selectedItemId, setSelectedItemId] = useState<string>('');
+  const [selectedItemName, setSelectedItemName] = useState<string>('');
   const [reserverName, setReserverName] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [isReserving, setIsReserving] = useState(false);
@@ -18,7 +18,7 @@ const GiftSection: React.FC = () => {
       setItems(fetchedItems);
     } catch (error) {
       console.error("Failed to load items:", error);
-      alert("Não foi possível carregar a lista de presentes.");
+      alert("Não foi possível carregar a lista de presentes. Verifique se a URL do script está configurada em giftService.ts");
     } finally {
       setIsLoading(false);
     }
@@ -29,18 +29,18 @@ const GiftSection: React.FC = () => {
   }, [loadItems]);
 
   const handleReserve = async () => {
-    if (!selectedItemId || !reserverName.trim()) {
+    if (!selectedItemName || !reserverName.trim()) {
       alert("Por favor, selecione um item e digite seu nome.");
       return;
     }
 
     setIsReserving(true);
     try {
-      const result = await reserveItem(parseInt(selectedItemId, 10), reserverName);
+      const result = await reserveItem(selectedItemName, reserverName);
       if (result.success) {
         alert("Item reservado com sucesso!");
-        setSelectedItemId('');
-        setReserverName('');
+        setSelectedItemName('');
+        // Do not clear reserverName, as user might want to reserve another item.
         await loadItems(); // Refresh list
       } else {
         alert(`Erro ao reservar: ${result.error}`);
@@ -54,7 +54,7 @@ const GiftSection: React.FC = () => {
     }
   };
 
-  const selectedItem = items.find(item => item.id === parseInt(selectedItemId, 10));
+  const selectedItem = items.find(item => item.name === selectedItemName);
 
   return (
     <SectionCard title="Escolha um item para presentear" iconClass="fas fa-gift">
@@ -63,8 +63,8 @@ const GiftSection: React.FC = () => {
       <div className="flex items-center mb-4">
         <select
           id="item-select"
-          value={selectedItemId}
-          onChange={(e) => setSelectedItemId(e.target.value)}
+          value={selectedItemName}
+          onChange={(e) => setSelectedItemName(e.target.value)}
           disabled={isLoading}
           className="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-400 focus:border-rose-400 transition text-gray-800"
         >
@@ -73,7 +73,7 @@ const GiftSection: React.FC = () => {
             const available = item.totalQuantity - item.reservedBy.length;
             const isAvailable = available > 0;
             return (
-              <option key={item.id} value={item.id} disabled={!isAvailable}>
+              <option key={item.name} value={item.name} disabled={!isAvailable}>
                 {item.name} ({isAvailable ? `${available} de ${item.totalQuantity} disponíveis` : 'Esgotado'})
               </option>
             );

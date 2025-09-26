@@ -28,10 +28,14 @@ const RsvpSection: React.FC = () => {
       }
       setIsLoading(true);
       try {
-          await confirmAttendance({ name, email, guests, confirmation: status });
-          alert('Presença confirmada com sucesso!');
+          const result = await confirmAttendance({ name, email, guests, confirmation: status });
+          if(result.success) {
+            alert('Presença confirmada com sucesso!');
+          } else {
+            throw new Error('API returned success: false');
+          }
       } catch (error) {
-          alert('Ocorreu um erro ao confirmar a presença.');
+          alert('Ocorreu um erro ao confirmar a presença. Tente novamente.');
           console.error(error);
       } finally {
           setIsLoading(false);

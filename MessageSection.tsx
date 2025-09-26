@@ -9,16 +9,28 @@ const MessageSection: React.FC = () => {
     const [isLoading, setIsLoading] = useState(false);
     const maxLength = 250;
 
+    // In a real app, you'd get this from a shared state/context after user fills the RSVP form
+    const [name, setName] = useState('JORGE ALBERTO IWASAKI CASTELLO');
+    const [email, setEmail] = useState('cobcastello@gmail.com');
+
     const handleSendMessage = async () => {
         if (!message.trim()) {
             alert('Por favor, escreva uma mensagem.');
             return;
         }
+        if (!name || !email) {
+            alert('Por favor, preencha seu nome e email na seção de confirmação primeiro.');
+            return;
+        }
         setIsLoading(true);
         try {
-            await sendMessage({ message });
-            alert('Mensagem enviada com sucesso!');
-            setMessage('');
+            const result = await sendMessage({ name, email, message });
+            if (result.success) {
+                alert('Mensagem enviada com sucesso!');
+                setMessage('');
+            } else {
+                throw new Error('API returned success: false');
+            }
         } catch (error) {
             alert('Ocorreu um erro ao enviar a mensagem.');
             console.error(error);
