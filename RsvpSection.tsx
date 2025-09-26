@@ -71,11 +71,11 @@ const RsvpSection: React.FC = () => {
       <div className="space-y-4">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-600 mb-1">Nome *</label>
-          <input type="text" id="name" value={name} onChange={e => setName(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-400 focus:border-purple-400 transition" />
+          <input type="text" id="name" value={name} onChange={e => setName(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-400 focus:border-purple-400 transition text-gray-800" />
         </div>
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-gray-600 mb-1">Email *</label>
-          <input type="email" id="email" value={email} onChange={e => setEmail(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-400 focus:border-purple-400 transition" />
+          <input type="email" id="email" value={email} onChange={e => setEmail(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-400 focus:border-purple-400 transition text-gray-800" />
         </div>
       </div>
 
