@@ -66,7 +66,7 @@ const GiftSection: React.FC = () => {
           value={selectedItemId}
           onChange={(e) => setSelectedItemId(e.target.value)}
           disabled={isLoading}
-          className="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-400 focus:border-rose-400 transition"
+          className="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-400 focus:border-rose-400 transition text-gray-800"
         >
           <option value="">{isLoading ? 'Carregando itens...' : '-- Selecione um item --'}</option>
           {items.map(item => {
@@ -95,7 +95,7 @@ const GiftSection: React.FC = () => {
               value={reserverName}
               onChange={e => setReserverName(e.target.value)}
               placeholder="Digite seu nome completo"
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-400 focus:border-rose-400 transition" 
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-400 focus:border-rose-400 transition text-gray-800" 
             />
           </div>
           <button onClick={handleReserve} disabled={isReserving} className="w-full mt-4 bg-rose-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-rose-600 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500 disabled:bg-rose-300 flex items-center justify-center">
