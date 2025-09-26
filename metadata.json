@@ -1,0 +1,5 @@
+{
+  "name": "Baby Shower Invitation & Gift List",
+  "description": "An elegant and functional web application for a baby shower invitation. Guests can RSVP, choose a gift from a managed list with quantity tracking, leave a message for the parents, and view event location details.",
+  "requestFramePermissions": []
+}
